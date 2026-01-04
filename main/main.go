@@ -13,7 +13,10 @@ func main() {
 	bucket := flag.String("bucket", "", "sharing bucket")
 	flag.Parse()
 
-	s3share.Upload(s3share.Client, from, bucket)
+	err := s3share.Upload(s3share.Client, from, bucket)
+	if err != nil {
+		fmt.Printf("Problem with uploading: %s", err)
+	}
 	url, err := s3share.Share(s3share.Client, from, bucket)
 
 	if err != nil {
