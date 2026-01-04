@@ -11,7 +11,7 @@ import (
 func Share(client *s3.Client, key *string, bucket *string) (string, error) {
 	var url string
 
-	lifetimeSecs := int64(3600)
+	lifetimeSecs := int64(3600) // valid 1 hour
 	s3PresignClient := s3.NewPresignClient(client)
 	req, err := s3PresignClient.PresignGetObject(
 		context.TODO(),
